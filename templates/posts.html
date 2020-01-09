@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Post</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <di>
+        <h2 style="display: inline;">All post</h2>
+        <a style="display: inline;" class="btn btn-success float-right" href="/post/new">+New post</a>
+    </di>
+    <br>
+    <hr>
+    {% for post in posts %}
+    <h4>Title: {{ post.title }}</h4>
+    {% if post.author %}
+
+    <small>Written by: {{ post.author}} at {{post.date_pub}} </small>
+    {% else %}
+    <small>Written by: None at {{post.date_pub}} </small>
+    {% endif %}
+    <p>{{ post.content}}</p>
+
+    <a class="btn btn-danger" href="/post/delete/{{post.id}}">Delete</a>
+    <a class="btn btn-primary " href="/post/edit/{{post.id}}">Edit</a>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock %}
